@@ -23,7 +23,7 @@ This sub-theme requires the [Component Libraries](https://www.drupal.org/project
 
 ## Usage
 
-Download Solstice from the [git repo](https://github.com/IQ-Solutions/solstice). Solstice is set up to extend Equinox. If you are reading this, Equinox was probably already installed in your Drupal project via Composer. If not, you will need to add Equinox to your Drupal project first. Contact a team member for info or check out the [Equinox repo](https://github.com/pjudge/equinox). 
+Download Solstice from the [git repo](https://github.com/pjudge/solstice). Solstice is set up to extend Equinox. If you are reading this, Equinox was probably already installed in your Drupal project via Composer. If not, you will need to add Equinox to your Drupal project first. Contact a team member for info or check out the [Equinox repo](https://github.com/pjudge/equinox). 
 
 Once you have Equinox installed and Solstice downloaded, place the unzipped Solstice directory in `themes/custom`. You can choose Solstice as your theme in your Drupal UI. 
 
