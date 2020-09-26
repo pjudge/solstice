@@ -1,0 +1,21 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - solstice
+_core:
+  default_config_hash: x6zOl6Jgotg1XQSlqsULKYGT68RAK0JiGG_hcXGLD7k
+id: solstice_powered
+theme: solstice
+region: header
+weight: -3
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

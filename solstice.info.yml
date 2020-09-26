@@ -1,0 +1,31 @@
+name: Solstice
+type: theme
+description: 'A componentized D8 sub-theme.'
+logo: logo.png
+type: theme
+version: 1.0.0
+core: 8.x
+libraries:
+  - solstice/global-styling
+base theme: equinox
+regions:
+  top_bar: 'Top Bar' 
+  header: Header
+  primary_menu: 'Primary Menu'
+  breadcrumb: Breadcrumb
+  above_content: 'Above Content'
+  sidebar_left: 'Sidebar Left'
+  content: Content
+  sidebar_right: 'Sidebar Right'
+  footer: Footer
+
+component-libraries:
+  atoms:
+    paths: 
+      - components/04-atoms
+  molecules:
+    paths:
+      - components/05-molecules
+  organisms:
+    paths:
+      - components/06-organisms

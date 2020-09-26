@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - solstice
+_core:
+  default_config_hash: lmbt7UymMTLAGuuuLCyEz-cpJ1XPE_Ix_cZQ1ImgTbg
+id: solstice_messages
+theme: solstice
+region: above_content
+weight: -7
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

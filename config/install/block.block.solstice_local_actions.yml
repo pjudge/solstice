@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  theme:
+    - solstice
+_core:
+  default_config_hash: n0rSOKuQtDRmHXD12Rxc6YPHOLqoWZQkR2BeElO1etM
+id: solstice_local_actions
+theme: solstice
+region: above_content
+weight: -3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

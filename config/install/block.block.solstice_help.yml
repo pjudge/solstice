@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - solstice
+_core:
+  default_config_hash: L98A0OIdT34_IKqQnTYZO_qn6w7rsrteP2NqVexUeVk
+id: solstice_help
+theme: solstice
+region: above_content
+weight: -4
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

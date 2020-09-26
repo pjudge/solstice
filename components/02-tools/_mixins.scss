@@ -1,0 +1,67 @@
+/* Mixins */
+
+/** 
+* Respond To - Mixin to manage responsive breakpoints
+* https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
+*	Usage:  @include respond-to('s') {}
+* @author Hugo Giraudel
+* 383px, 451px, 636px, 768px, 1167px, 1424px, 1488px
+*/
+$breakpoints: (
+  'xxs': 320px,
+  'xs': 480px,
+  's': 600px,
+  'm': 768px,
+  'l': 960px,
+  'xl': 1200,
+) !default;
+
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value.
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map.
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+/** 
+* CSS Transition
+*	Usage: @include transition(width, 0.3s, ease-out);
+*/
+ @mixin transition($transition-property, $transition-time, $method) {
+	-webkit-transition: $transition-property $transition-time $method;
+	-moz-transition: $transition-property $transition-time $method;
+	-ms-transition: $transition-property $transition-time $method;
+	-o-transition: $transition-property $transition-time $method;
+	transition: $transition-property $transition-time $method;
+}
+
+/** Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback  
+ *	Usage: @include font-size(1, large);
+ */
+ @mixin font-size( $decimal-size, $keyword: null ) {
+  @if $keyword{ font-size: $keyword; }
+  @else { font-size: $decimal-size * $base-font-multiplier * 16px;}
+  font-size: $decimal-size * 1rem;
+}
+
+// Donnie's PL mixins. 
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$mobile-width + 0.1em}) {
+    @content;
+  }
+}

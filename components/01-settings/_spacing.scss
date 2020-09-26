@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    #SPACING VARIABLES
+\*------------------------------------*/
+$l-max-width: 80em;
+
+/**
+ * Spacing Defaults
+ */
+$space: 0.6rem;
+$space-and-half: $space*1.5;
+$space-double: $space*2;
+$space-double-and-half: $space*2.5;
+$space-quad: $space*4;
+$space-half: $space/2;
+
+$pad: 0.6em;
+$pad-and-half: $pad*1.5;
+$pad-double: $pad*2;
+$pad-double-and-half: $pad*2.5;
+$pad-quad: $pad*4;
+$pad-half: $pad/2;
+$pad-quarter: $pad/4;
+
+/**
+ * Custom Spacing
+ */
+$l-header-min-height: 110px;
+$logo-max-width: 380px;
+$inner-max-width: 1400px;
+$content-max-width: 800px;
+$left-col-width: 300px;
+$full-width:100%;
+$float-width:40%;

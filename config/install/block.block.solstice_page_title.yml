@@ -1,0 +1,20 @@
+
+langcode: en
+status: true
+dependencies:
+  theme:
+    - solstice
+_core:
+  default_config_hash: GX32azSwHNzi2fpKU2zVBGArpeBX6dbVWaQYNmhwDQE
+id: solstice_page_title
+theme: solstice
+region: above_content
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

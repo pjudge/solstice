@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    #Breadcrumbs
+\*------------------------------------*/
+.breadcrumb-list {
+
+
+	.breadcrumb-list-item {
+
+
+		&::after {
+			content:"/";
+			padding-left: $space-half;
+		}
+
+		&:last-child::after {
+			content:" ";
+		}
+	}
+}

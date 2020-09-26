@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  theme:
+    - solstice
+_core:
+  default_config_hash: anrGaUT5e3q94suFYXG7Cl8ADSKZEzp8rt4jK_KGR6c
+id: solstice_local_tasks
+theme: solstice
+region: above_content
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

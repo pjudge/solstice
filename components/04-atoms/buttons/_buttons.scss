@@ -1,0 +1,95 @@
+/*------------------------------------*\
+    #BUTTONS
+\*------------------------------------*/
+
+/**
+* All base Button styles this will create the primary button style
+*/
+.button {
+ 
+  &:hover, 
+  &:focus {
+ 
+  }
+
+  /**
+    * Disabled button
+    */
+  &.disabled {
+    opacity: 0.5;
+  }
+
+  /*Button variations*/
+  &.button-primary {
+   
+    &:hover, 
+    &:focus {
+    
+    }
+  }
+  &.button-primary-alt {
+   
+    &:hover, 
+    &:focus {
+     
+    }
+  }
+  &.button-secondary {
+    
+    &:hover, 
+    &:focus {
+     
+    }
+  }
+  &.button-secondary-alt {
+  
+    &:hover, 
+    &:focus {
+      
+    }
+  }
+
+  &.button--menu {
+   
+  }
+
+  &.button--small {
+   
+  }
+  &.button--medium {
+  
+  }
+  &.button--large {
+  
+  }
+}
+
+/**
+* Text button
+*/
+.text-button {
+ 
+  &:hover, 
+  &:focus {
+   
+  }
+}
+
+/**
+* Action button
+*/
+.button-action {
+  
+  .button-action-icon {
+    
+  }
+  .button-action-title {
+  
+  }
+  .button-action-blurb {
+   
+  }
+  &:hover {
+   
+  }
+}

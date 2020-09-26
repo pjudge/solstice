@@ -1,0 +1,5 @@
+# Anyting downloaded via npm
+node_modules/
+
+# Prepros config
+prepros-6.config

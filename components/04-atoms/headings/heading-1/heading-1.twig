@@ -1,0 +1,21 @@
+ {# 
+  /** 
+  * If the page is an article content type, add branded class 
+  * to page title. If there's a news type set, print that above
+  * page title. See `.theme` page title preprocess.
+  */
+  #}
+{% if contentType == 'Article' %}
+  <div class="page-banner page-banner--branded"> 
+    {{ newsType }}
+    <h1 class="h1 text-reverse">
+      {{ heading }}
+    </h1>
+  </div>
+{% else %}
+  <div class="page-banner"> 
+    <h1 class="h1">
+      {{ heading }}
+    </h1>
+  </div>
+{% endif %}

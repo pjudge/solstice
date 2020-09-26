@@ -1,0 +1,71 @@
+// This class is attached to checkboxes.
+.checkbox {
+  .checkbox-input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none; /* in case this ever gets supported */
+    background: none;
+    opacity: .00001;
+    z-index: 2;
+  }
+
+  > label {
+    position: relative;
+    display: inline-block;
+    padding: 0 0 0 1.3em;
+  }
+
+  > label::before,
+  > label::after {
+    position: absolute;
+    display: inline-block;
+    content: '';
+  }
+
+  /* Outer box of the fake checkbox */
+  > label::before{
+    height: 18px;
+    width: 19px;
+    border: 1px solid;
+    left: -7px;
+    top: 3px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+  }
+
+  /* Checkmark of the fake checkbox */
+  > label::after {
+    height: 6px;
+    width: 14px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    left: -4px;
+    top: 7px;
+  }
+
+  /* Hide the checkmark by default */
+  > .checkbox-input + label::after {
+    content: none;
+  }
+
+  /* Unhide on the checked state */
+  > .checkbox-input:checked + label::after {
+    content: '';
+    color: $color-white;
+  }
+
+  /* Change the color of the box when it's checked. */
+  > .checkbox-input:checked + label::before {
+    background-color: $color-brand-primary;
+    border-color: $color-brand-primary;
+  }
+
+  /* Adding focus styles */
+  > .checkbox-input:focus + label::before {
+    outline: 3px solid $color-focus;
+    outline-offset: 0;
+  }
+}
