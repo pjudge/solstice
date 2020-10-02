@@ -52,16 +52,3 @@ $breakpoints: (
   @else { font-size: $decimal-size * $base-font-multiplier * 16px;}
   font-size: $decimal-size * 1rem;
 }
-
-// Donnie's PL mixins. 
-@mixin desktop {
-  @media (min-width: #{$desktop-width}) {
-    @content;
-  }
-}
-
-@mixin tablet-up {
-  @media (min-width: #{$mobile-width + 0.1em}) {
-    @content;
-  }
-}
