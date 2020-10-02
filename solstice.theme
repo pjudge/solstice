@@ -1,6 +1,105 @@
 <?php
 
+use Drupal\image\Entity\ImageStyle;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+
 /**
  * @file
  * Functions to support theming in the solstice theme.
  */
+ 
+ /**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ * Create theme suggestions for page-title templates based on Content Type.
+ * https://drupal.stackexchange.com/a/219339
+ */
+function solstice_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $media = \Drupal::routeMatch()->getParameter('media');
+
+  // Object check required, sometimes it's a string, yes, really. Who knew?
+  if ($node && $node instanceof NodeInterface) {
+    array_splice($suggestions, 1, 0, 'page_title__' . $node->getType());
+  } elseif ($media && $media instanceof \Drupal\media\MediaInterface) {
+    array_splice($suggestions, 1, 0, 'page_title__media__' . $media->bundle());
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter()
+ * to allow for more theme suggestions for custom block types.
+ * https://www.drupal.org/forum/support/theme-development/2016-05-12/theming-custom-block-types
+ * @param array $suggestions
+ * @param array $variables
+ */
+function solstice_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Block suggestions for custom block bundles.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}
+
+/**
+ * Implements hook_preprocess_media().
+ */
+function solstice_preprocess_media(array &$variables) {
+  /**
+   * @var \Drupal\media\Entity\Media $media
+   */
+  $media = $variables['elements']['#media'];
+
+  // Put media url in variable to use in template.
+  $variables['media_url'] = $media->url();
+
+  // If the media has a file field AND it's not NULL,
+  // put file size in variable to use in template.
+  if ($media->hasField('field_media_file') && $media->get('field_media_file')) {
+    $media_file = $media->get('field_media_file')->entity;
+    $variables['media_file_size'] = format_size($media_file->getSize());
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ *
+ * This gets the media image from a field in a paragraph,
+ * loads the image style and builds a url from it
+ * then puts it in a variable to use in twig tpl.
+ * Using the 'banner' image style which only optimizes.
+ *
+ */
+function solstice_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $paragraph_type = $paragraph->getType();
+
+  // Only do this for the hero image on homepage.
+  if ($paragraph_type == 'hero_image_with_text') {
+    // Check if field isn't empty check to be safe.
+    if ($paragraph->hasField('field_media') && !$paragraph->get('field_media')->isEmpty()) {
+      // Get the media image field.
+      $media = $paragraph->get('field_media')->entity;
+      // Load the file.
+      $file = \Drupal\file\Entity\File::load($media->field_media_image->target_id);
+      if (!empty($file)) {
+        // If it's not empty, get the uri.
+        $file_uri = $file->getFileUri();
+        // Load the image style and build url.
+        $url_with_style = ImageStyle::load('banner')->buildUrl($file_uri);
+        // Put it in a var to use as bg img in twig.
+        $variables['hero_url'] = $url_with_style;
+      }
+    }
+  }
+}
+
+/**
+ * Implements HOOK_form_alter().
+ * Add placeholder text that is translatable to pub finder exposed filter field.
+ */
+function solstice_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-publications-block-1') {
+    $form['title']['#attributes']['placeholder'] = t('Search by Title');
+  }
+}
