@@ -1,12 +1,11 @@
 // This class is attached to radio buttons.
 .radio {
-	position: relative;
+  position: relative;
 
-
-/* visually hide the radio button,
-   and set it up to be positioned over
-   the styled radio button replacement
-*/
+  /* visually hide the radio button,
+     and set it up to be positioned over
+     the styled radio button replacement
+  */
   > .radio-input {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -64,5 +63,4 @@
   > .radio-input[disabled] ~ label {
     opacity: 0.5;
   }
-
 }
