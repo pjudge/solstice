@@ -4,6 +4,7 @@ description: 'A componentized D8 sub-theme.'
 logo: logo.png
 version: 1.0.0
 core: 8.x
+core_version_requirement: ^8 || ^9
 libraries:
   - solstice/global-styling
 base theme: equinox
