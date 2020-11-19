@@ -2,7 +2,6 @@ name: Solstice
 type: theme
 description: 'A componentized D8 sub-theme.'
 logo: logo.png
-type: theme
 version: 1.0.0
 core: 8.x
 libraries:
